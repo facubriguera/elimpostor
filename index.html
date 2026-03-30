@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>El Impostor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div id="screen-setup" class="screen active">
+        <h1>El Impostor</h1>
+        
+        <div class="config-section">
+            <label for="impostor-count">Cantidad de Impostores:</label>
+            <input type="number" id="impostor-count" value="1" min="1" max="3">
+        </div>
+
+        <h3>Jugadores</h3>
+        <div id="players-container" class="player-list">
+            <div class="input-group">
+                <input type="text" class="player-input" value="Facu" placeholder="Nombre del jugador">
+                <button class="remove-btn" onclick="this.parentElement.remove()">×</button>
+            </div>
+            <div class="input-group">
+                <input type="text" class="player-input" value="Tincho" placeholder="Nombre del jugador">
+                <button class="remove-btn" onclick="this.parentElement.remove()">×</button>
+            </div>
+            <div class="input-group">
+                <input type="text" class="player-input" value="Vane" placeholder="Nombre del jugador">
+                <button class="remove-btn" onclick="this.parentElement.remove()">×</button>
+            </div>
+        </div>
+
+        <button class="secondary" onclick="addPlayerField()">+ Agregar Jugador</button>
+        <div class="spacer"></div>
+        <button onclick="startGame()">Comenzar Juego</button>
+    </div>
+
+    <div id="screen-pass" class="screen">
+        <div class="spacer"></div>
+        <h2>Pásale el teléfono a</h2>
+        <h1 id="pass-player-name" style="font-size: 3rem; color: var(--secondary-color);">Nombre</h1>
+        <p>Asegurate de que nadie más esté mirando la pantalla.</p>
+        <div class="spacer"></div>
+        <button onclick="showRevealScreen()">Ver mi palabra</button>
+    </div>
+
+    <div id="screen-reveal" class="screen">
+        <div class="spacer"></div>
+        <h2 id="reveal-player-name">Nombre</h2>
+        <p>Tu palabra es:</p>
+        <div id="reveal-word" class="word-display">Palabra</div>
+        <p id="reveal-role-hint" style="color: var(--error-color); display: none;">¡Sos el impostor! (Nadie más sabe esto)</p>
+        <div class="spacer"></div>
+        <button onclick="hideAndNext()">Ocultar y pasar</button>
+    </div>
+
+    <div id="screen-vote" class="screen">
+        <h2>Fase de Eliminación</h2>
+        <p>Debatan y elijan a quién eliminar.</p>
+        <div id="vote-container" class="player-list"></div>
+        <div class="spacer"></div>
+        <button class="secondary" onclick="showHelp()">Ver reglas / Ayuda</button>
+    </div>
+
+    <div id="screen-result" class="screen">
+        <div class="spacer"></div>
+        <h1 id="result-title">¡Ganaron!</h1>
+        <p id="result-message">Mensaje de victoria</p>
+        <div class="spacer"></div>
+        <button onclick="resetGame()">Jugar de Nuevo</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

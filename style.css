@@ -1,0 +1,166 @@
+:root {
+    --bg-color: #121212;
+    --surface-color: #1E1E1E;
+    --primary-color: #BB86FC;
+    --secondary-color: #03DAC6;
+    --error-color: #CF6679;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B3B3B3;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    flex: 1;
+    padding: 24px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.input-group {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"], input[type="number"] {
+    flex: 1;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: var(--primary-color);
+}
+
+button {
+    padding: 18px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.3s;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button.secondary {
+    background-color: var(--surface-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+button.danger {
+    background-color: var(--error-color);
+    color: #000;
+}
+
+button.remove-btn {
+    width: auto;
+    background-color: var(--error-color);
+    color: #000;
+    font-size: 1.2rem;
+    padding: 0 20px;
+    margin-bottom: 0;
+}
+
+.player-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.vote-btn {
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    border: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vote-btn.eliminated {
+    opacity: 0.5;
+    background-color: #111;
+    text-decoration: line-through;
+    pointer-events: none;
+}
+
+.word-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 40px 0;
+    color: var(--secondary-color);
+}
+
+.config-section {
+    background-color: var(--surface-color);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.config-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.spacer {
+    flex: 1;
+}
