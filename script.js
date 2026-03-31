@@ -160,3 +160,10 @@ function showResult(t, m, c) {
 
 function resetGame() { switchScreen('screen-setup'); }
 function showHelp() { alert('Debatan sutilmente para encontrar al impostor.'); }
+
+// Al final de script.js
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(reg => console.log('Service Worker registrado', reg))
+    .catch(err => console.warn('Error al registrar SW', err));
+}
